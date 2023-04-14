@@ -53,74 +53,55 @@ import matplotlib.pyplot as plt # used for creating visualizations and plots
 from PIL import Image
 ```
 ### **Extracting the text from the image**
-```
-ori_image = cv2.imread("/content/hqdefault.jpg") #Extracting the image 
+```ori_image = cv2.imread("/content/hqdefault.jpg") #Extracting the image 
 ori_img = cv2.cvtColor(ori_image, cv2.COLOR_BGR2RGB) # Appyling color
 plt.imshow(ori_img) 
 plt.axis('off')
 plt.show()
 ```
-<br/>
 ![image](https://user-images.githubusercontent.com/110376310/232060004-f5ab5370-6cb7-478a-be23-f27242fdb47b.png)
-<br/>
 ```
 fixed_img = cv2.resize(ori_img, None, fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
 plt.imshow(fixed_img)
 plt.axis("off")
 ```
-<br/>
-
 ![image](https://user-images.githubusercontent.com/110376310/232060072-fcf788b3-cb0b-42e1-b953-119598ceb9e0.png)
-<br/>
 ```
 ogimg = cv2.cvtColor(fixed_img, cv2.COLOR_RGB2GRAY) #to convert an RGB image to gray scale 
 ```
-<br/>
 ```
 kernel = cv2.getStructuringElement(cv2.MORPH_CROSS,(3,3)) # library to create a structuring element for morphological operations.
 dilation = cv2.dilate(ogimg, kernel, iterations=1) #applying dilation 
 plt.imshow(dilation)
 plt.axis("off")
 ```
-<br/>
 ![image](https://user-images.githubusercontent.com/110376310/232060165-4f924598-d5f4-402c-81bc-a74911a973c0.png)
-<br/>
 ```
 kernel = cv2.getStructuringElement(cv2.MORPH_CROSS,(3,3))
 erosion= cv2.erode(dilation, kernel, iterations=1) # erostion 
 plt.imshow(erosion)
 plt.axis("off")
 ```
-<br/>
 ![image](https://user-images.githubusercontent.com/110376310/232060549-45e0633c-8c0a-4892-9a05-0386a12c645f.png)
-<br/>
 ```
 binary = cv2.threshold(cv2.medianBlur(erosion, 3), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1] # thresholding for converting the image to bianry
 plt.imshow(binary)
 plt.axis("off")
 ```
-<br/>
 ![image](https://user-images.githubusercontent.com/110376310/232060648-d54016de-a1d2-4507-a46a-c48ba313c49c.png)
-
-<br/>
 ```
 gsbin = binary.astype(np.uint8) #storing the binary image in 8 bit
 # gsbin= 255 * gsbin
 plt.imshow(gsbin)
 ```
-<br/>
 ![image](https://user-images.githubusercontent.com/110376310/232060685-b9aa6e4d-4e88-41e1-ad8e-27fa8aa2964b.png)
-<br/>
 ```
-
 image2 = cv2.cvtColor(255-gsbin, cv2.COLOR_GRAY2RGB) #to convert a grayscale image represented by the 255-gsbin variable to an RGB image.
 plt.imshow(image2)
 plt.axis('off')
 plt.show()
 ```
-<br/>
 ![image](https://user-images.githubusercontent.com/110376310/232060736-53daae57-a82f-420e-928c-97f61b3f10ec.png)
-<br/>
 ```
 import matplotlib.image
 matplotlib.image.imsave('image1.png', image2)
