@@ -338,8 +338,6 @@ os.system("ttso.wav")
 from IPython.display import Audio, display
 sound_file = 'ttso.wav'
 display(Audio(sound_file, autoplay=True)) #output 
-
 ```
-<!-- <img width="245" alt="image" src="https://user-images.githubusercontent.com/110376310/232097534-d7a9bfb5-c88f-409f-9406-3e43cfa6ab77.png"> -->
 
 
