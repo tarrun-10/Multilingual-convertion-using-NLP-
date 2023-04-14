@@ -106,23 +106,19 @@ plt.show()
 import matplotlib.image
 matplotlib.image.imsave('image1.png', image2)
 ```
-<br/>
 ```
 extractedText = pytesseract.image_to_string("image1.png",lang='eng+tam+hin+kan+tel+mal',config='--psm 6') #convert the extracted to string
 extractedText= extractedText.replace('\n', ' ')
 ```
-<br/>
 ```
 print(extractedText)
 ```
-<br/>
 LINGUANAUT I'm learning Spanish right now. because | think it's a beautiful language. and also because | want to visit Spain one day. I'm improving day after day. but | need to practice with someone who Is a native. Siw MUIR CTU meroli) 
 
 ### **Language detection and making the text more understandable**
 ```
 !pip install langdetect #detect the language 
 ```
-<br/>
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting langdetect
   Downloading langdetect-1.0.9.tar.gz (981 kB)
