@@ -132,19 +132,15 @@ Building wheels for collected packages: langdetect
 Successfully built langdetect
 Installing collected packages: langdetect
 Successfully installed langdetect-1.0.9
-<br/>
 ```
 from langdetect import detect
 lang = detect(extractedText)
 print(lang)
 ```
-<br/>
 en
-<br/>
 ```
 pip install translate #to translate text from one language to another
 ```
-<br/>
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting translate
   Downloading translate-3.6.1-py2.py3-none-any.whl (12 kB)
@@ -159,11 +155,9 @@ Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/pytho
 Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests->translate) (1.26.15)
 Installing collected packages: libretranslatepy, translate
 Successfully installed libretranslatepy-2.1.1 translate-3.6.1
-<br/>
 ```
 pip install gTTs #Google Text-to-Speech
 ```
-<br/>
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting gTTs
   Downloading gTTS-2.3.1-py3-none-any.whl (28 kB)
@@ -175,11 +169,9 @@ Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.9
 Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.9/dist-packages (from requests<3,>=2.27->gTTs) (3.4)
 Installing collected packages: gTTs
 Successfully installed gTTs-2.3.1
-<br/>
 ```
 pip install gtts
 ```
-<br/>
 
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: gtts in /usr/local/lib/python3.9/dist-packages (2.3.1)
@@ -189,7 +181,6 @@ Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.9/dist-pac
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests<3,>=2.27->gtts) (2.0.12)
 Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests<3,>=2.27->gtts) (1.26.15)
 Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests<3,>=2.27->gtts) (2022.12.7)
-<br/>
 
 ```
 import os
@@ -200,9 +191,7 @@ translator= Translator(from_lang=lang,to_lang="en")
 translation = translator.translate(extractedText)
 print(translation)
 ```
-<br/>
 LINGUANAUT I'm learning Spanish right now. because | think it's a beautiful language. and also because | want to visit Spain one day. I'm improving day after day. but | need to practice with someone who Is a native. Siw MUIR CTU meroli) 
-<br/>
 ```
 trans = ""
 i=0
@@ -223,9 +212,7 @@ for element in translation:
         break;
 print(trans)
 ```
-<br/>
 LINGUANAUT I'm learning Spanish right now. because | think it's a beautiful language. and also because | want to visit Spain one day. I'm improving day after day. but | need to practice with someone who Is a native. Siw MUIR CTU meroli) 
-<br/>
 ```
 trans1 = ""
 i=0
@@ -246,35 +233,27 @@ for element in trans:
         break;
 print(trans1)
 ```
-<br/>
 LINGUANAUT I m learning Spanish right now because think it s a beautiful language and also because want to visit Spain one day I m improving day after day but need to practice with someone who Is a native Siw MUIR CTU meroli 
-<br/>
 ```
 from textblob import TextBlob
 tb_txt = TextBlob(trans1)
 ```
-<br/>
 ```
 correctedTBText = tb_txt.correct()
 correctedText = str(correctedTBText)
 ```
-<br/>
 ```
 print(str(correctedText)) #finale text after modifications 
 ```
-<br/>
-LINGUANAUT I m learning Spanish right now because think it s a beautiful language and also because want to visit Pain one day I m improving day after day but need to practice with someone who Is a native In MUIR CTU merely 
-<br/>
+LINGUANAUT I m learning Spanish right now because think it s a beautiful language and also because want to visit Pain one day I m improving day after day but need to practice with someone who Is a native In MUIR CTU merely
 
-Converting the english text to tamil
-<br/>
+### **Converting the english text to tamil**
 ```
 !pip install git+https://github.com/huggingface/transformers -q  #importing the Dataset from hugging face 
 !pip install transformers -U -q  #Providies pretrained models and tokenzing tools 
 !pip install sentencepiece #open-source text tokenizer and detokenizer developed by Google
 !pip freeze | grep transformers #filters the output 
 ```
-<br/>
   Installing build dependencies ... done
   Getting requirements to build wheel ... done
   Preparing metadata (pyproject.toml) ... done
@@ -291,43 +270,31 @@ transformers @ git+https://github.com/huggingface/transformers@c8df3900c8f1ffa87
 <br/>
 
 ```from transformers import MBartForConditionalGeneration, MBart50TokenizerFast # they are pretrained models used for convertion one language to another ```
-<br/>
 
 ```
 model = MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-one-to-many-mmt") #downloading the pretrained model 
 tokenizer = MBart50TokenizerFast.from_pretrained("facebook/mbart-large-50-one-to-many-mmt", src_lang="en_XX")
 ```
-<br/>
 <img width="610" alt="image" src="https://user-images.githubusercontent.com/110376310/232096152-2c38a233-522a-4c0a-ad8e-6872366dc3b9.png">
-
-<br/>
-
-
 ```
 model_inputs = tokenizer(correctedText, return_tensors="pt") #tokenizing the input 
 ```
-<br/>
 ```
 generated_tokens = model.generate(
     **model_inputs,
     forced_bos_token_id=tokenizer.lang_code_to_id["ta_IN"] #setting the language 
 )
 ```
-<br/>
 ```
 translation = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
 ```
-<br/>
 ```
 print(translation)
 ```
-<br/>
 ['லிங்கனவுட் நான் இப்பொழுது ஸ்பெயின் மொழியை கற்றுக் கொண்டிருக்கிறேன், ஏனெனில் இது ஒரு அழகிய மொழி என்று கருதுகிறேன், மேலும் ஒரு நாள் வலியை பார்க்க விரும்புகிறேன், நான் நாள்தோறும் மேம்பட்டு வருகிறேன், ஆனால் ஒருவருடன் பயிற்சி செய்ய வேண்டியது அவசியம்.']
-<br/>
 ```
 !pip install playsound #library to play sound 
 ```
-<br/>
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting playsound
   Downloading playsound-1.3.0.tar.gz (7.7 kB)
@@ -339,7 +306,6 @@ Building wheels for collected packages: playsound
 Successfully built playsound
 Installing collected packages: playsound
 Successfully installed playsound-1.3.0
-<br/>
 ```
 !pip install pydub #library for dubbing 
 ```
@@ -348,11 +314,9 @@ Collecting pydub
   Downloading pydub-0.25.1-py2.py3-none-any.whl (32 kB)
 Installing collected packages: pydub
 Successfully installed pydub-0.25.1
-<br/>
 ```
 pip install ffmpeg #library for converting to speech 
 ```
-<br/>
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting ffmpeg
   Downloading ffmpeg-1.4.tar.gz (5.1 kB)
@@ -364,21 +328,18 @@ Building wheels for collected packages: ffmpeg
 Successfully built ffmpeg
 Installing collected packages: ffmpeg
 Successfully installed ffmpeg-1.4
-<br/>
 ```
 txt=' '.join(translation) #convert the list to string
 tts=gt.gTTS(text=txt,lang="ta") 
 tts.save("ttso.wav") #speech generated 
 os.system("ttso.wav")
 ```
-<br/>
 ```
 from IPython.display import Audio, display
 sound_file = 'ttso.wav'
 display(Audio(sound_file, autoplay=True)) #output 
 
 ```
-<br/>
 <img width="245" alt="image" src="https://user-images.githubusercontent.com/110376310/232097534-d7a9bfb5-c88f-409f-9406-3e43cfa6ab77.png">
 
 
