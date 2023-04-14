@@ -328,6 +328,7 @@ Successfully installed pydub-0.25.1
 pip install ffmpeg #library for converting to speech 
 
 ```
+
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting ffmpeg
   Downloading ffmpeg-1.4.tar.gz (5.1 kB)
@@ -339,16 +340,21 @@ Building wheels for collected packages: ffmpeg
 Successfully built ffmpeg
 Installing collected packages: ffmpeg
 Successfully installed ffmpeg-1.4
+
 ```
 txt=' '.join(translation) #convert the list to string
 tts=gt.gTTS(text=txt,lang="ta") 
 tts.save("ttso.wav") #speech generated 
 os.system("ttso.wav")
+
 ```
+
 ```
+
 from IPython.display import Audio, display
 sound_file = 'ttso.wav'
 display(Audio(sound_file, autoplay=True)) #output 
+
 ```
 
 
