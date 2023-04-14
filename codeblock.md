@@ -5,7 +5,7 @@ Collecting pytesseract
 Requirement already satisfied: Pillow>=8.0.0 in /usr/local/lib/python3.9/dist-packages (from pytesseract) (8.4.0)
 Requirement already satisfied: packaging>=21.3 in /usr/local/lib/python3.9/dist-packages (from pytesseract) (23.0)
 Installing collected packages: pytesseract
-Successfully installed pytesseract-0.3.10__
+Successfully installed pytesseract-0.3.10 <br/>
 ```!sudo apt install tesseract-ocr #OCR developed by google it can sence 100 languages```
 Reading package lists... Done
 Building dependency tree       
