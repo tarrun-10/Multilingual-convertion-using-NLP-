@@ -276,24 +276,31 @@ model = MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-o
 tokenizer = MBart50TokenizerFast.from_pretrained("facebook/mbart-large-50-one-to-many-mmt", src_lang="en_XX")
 ```
 <img width="610" alt="image" src="https://user-images.githubusercontent.com/110376310/232096152-2c38a233-522a-4c0a-ad8e-6872366dc3b9.png">
+
 ```
 model_inputs = tokenizer(correctedText, return_tensors="pt") #tokenizing the input 
 ```
+
 ```
 generated_tokens = model.generate(
     **model_inputs,
     forced_bos_token_id=tokenizer.lang_code_to_id["ta_IN"] #setting the language 
 )
 ```
+
 ```
 translation = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
 ```
+
 ```
 print(translation)
+
 ```
 ['லிங்கனவுட் நான் இப்பொழுது ஸ்பெயின் மொழியை கற்றுக் கொண்டிருக்கிறேன், ஏனெனில் இது ஒரு அழகிய மொழி என்று கருதுகிறேன், மேலும் ஒரு நாள் வலியை பார்க்க விரும்புகிறேன், நான் நாள்தோறும் மேம்பட்டு வருகிறேன், ஆனால் ஒருவருடன் பயிற்சி செய்ய வேண்டியது அவசியம்.']
+
 ```
 !pip install playsound #library to play sound 
+
 ```
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting playsound
@@ -306,16 +313,20 @@ Building wheels for collected packages: playsound
 Successfully built playsound
 Installing collected packages: playsound
 Successfully installed playsound-1.3.0
+
 ```
 !pip install pydub #library for dubbing 
+
 ```
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting pydub
   Downloading pydub-0.25.1-py2.py3-none-any.whl (32 kB)
 Installing collected packages: pydub
 Successfully installed pydub-0.25.1
+
 ```
 pip install ffmpeg #library for converting to speech 
+
 ```
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting ffmpeg
